@@ -21,6 +21,10 @@ export default function BanksAdminPage() {
 
   const fetchBanks = async () => {
     const { data, error } = await supabase.from('banks').select('*')
+    if (error) {
+      console.error('Error fetching banks:', error)
+      return
+    }
     if (data) setBanks(data)
   }
 

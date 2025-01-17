@@ -29,7 +29,7 @@ export default function LoginPage() {
 
     try {
       router.push('/form')
-    } catch (error) {
+    } catch {
       setError('Anmeldung fehlgeschlagen')
     }
   }

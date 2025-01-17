@@ -41,9 +41,11 @@ export default function FormPage() {
       .select('*')
       .eq('active', true)
     
-    if (data) {
-      setBanks(data)
+    if (error) {
+      console.error('Error fetching banks:', error)
+      return
     }
+    if (data) setBanks(data)
   }
 
   const handleSubmit = async (e: React.FormEvent) => {

@@ -33,9 +33,11 @@ export default function AdminPage() {
       `)
       .order('created_at', { ascending: false })
 
-    if (data) {
-      setSubmissions(data)
+    if (error) {
+      console.error('Error fetching submissions:', error)
+      return
     }
+    if (data) setSubmissions(data)
   }
 
   return (
