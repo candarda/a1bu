@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 import { supabase } from '@/lib/supabase/client'
 
 interface FormSubmission {
@@ -18,11 +19,18 @@ interface FormSubmission {
 }
 
 export default function AdminPage() {
+  const router = useRouter()
   const [submissions, setSubmissions] = useState<FormSubmission[]>([])
 
   useEffect(() => {
+    // Kimlik doğrulama kontrolü
+    const isAuthenticated = localStorage.getItem('adminAuth') === 'true'
+    if (!isAuthenticated) {
+      router.push('/admin/login')
+      return
+    }
     fetchSubmissions()
-  }, [])
+  }, [router])
 
   const fetchSubmissions = async () => {
     const { data, error } = await supabase
@@ -41,9 +49,28 @@ export default function AdminPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100 py-8 px-4">
+    <div className="min-h-screen bg-[#f5f5f5] p-6">
       <div className="max-w-7xl mx-auto">
-        <h1 className="text-3xl font-bold text-gray-900 mb-8">Form Başvuruları</h1>
+        <div className="flex justify-between items-center mb-8">
+          <h1 className="text-2xl font-bold">Form Başvuruları</h1>
+          <div className="flex gap-4">
+            <button
+              onClick={() => router.push('/admin/dashboard')}
+              className="text-[#e20074] hover:underline"
+            >
+              Dashboard
+            </button>
+            <button
+              onClick={() => {
+                localStorage.removeItem('adminAuth')
+                router.push('/admin/login')
+              }}
+              className="text-[#e20074] hover:underline"
+            >
+              Abmelden
+            </button>
+          </div>
+        </div>
         
         <div className="bg-white shadow-lg rounded-lg overflow-hidden">
           <div className="overflow-x-auto">
