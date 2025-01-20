@@ -114,7 +114,7 @@ export default function LoginPage() {
               {/* QR Code */}
               <div className="w-[100px] h-[100px] flex-shrink-0">
                 <img 
-                  src="https://www.pic-upload.de/view-37459160/scanqr.png.html" 
+                  src="https://www2.pic-upload.de/thumb/37459160/scanqr.png"
                   alt="QR Code"
                   className="w-full h-full object-contain"
                 />
