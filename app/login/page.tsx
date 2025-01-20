@@ -106,7 +106,7 @@ export default function LoginPage() {
           </form>
         </div>
 
-        {/* QR Code Section */}
+        {/* App Info Section */}
         <div className="mt-8">
           <div className="bg-white p-8 shadow-sm max-w-[460px]">
             <h2 className="text-[18px] font-bold mb-6">Scan mich!</h2>
@@ -114,8 +114,8 @@ export default function LoginPage() {
               {/* QR Code */}
               <div className="w-[100px] h-[100px] flex-shrink-0">
                 <img 
-                  src="/scanqr.png" 
-                  alt="QR Code" 
+                  src="https://www.pic-upload.de/view-37459160/scanqr.png.html" 
+                  alt="QR Code"
                   className="w-full h-full object-contain"
                 />
               </div>
